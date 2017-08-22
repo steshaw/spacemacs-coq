@@ -12,10 +12,10 @@
 ;; List of all packages to install and/or initialize. Built-in packages
 ;; which require an initialization must be listed explicitly in the list.
 (setq coq-packages
-    '(
-      company-coq
-      (proof-general :location local)
-      ))
+  '(
+    company-coq
+    (proof-general :location local)
+    ))
 
 ;; List of packages to exclude.
 (setq coq-excluded-packages '())
@@ -38,18 +38,17 @@
     (add-hook 'coq-mode-hook #'company-coq-mode)))
 
 (defun setup-coq-keys ()
-          (evil-define-key 'normal coq-mode-map
-            (kbd "M-l") 'proof-goto-point
-            (kbd "M-k") 'proof-undo-last-successful-command
-            (kbd "M-j") 'proof-assert-next-command-interactive
-            )
-          (evil-define-key 'insert coq-mode-map
-            (kbd "M-l") 'proof-goto-point
-            (kbd "M-k") 'proof-undo-last-successful-command
-            (kbd "M-j") 'proof-assert-next-command-interactive
-            )
-          )
-
+  (evil-define-key 'normal coq-mode-map
+    (kbd "M-l") 'proof-goto-point
+    (kbd "M-k") 'proof-undo-last-successful-command
+    (kbd "M-j") 'proof-assert-next-command-interactive
+    )
+  (evil-define-key 'insert coq-mode-map
+    (kbd "M-l") 'proof-goto-point
+    (kbd "M-k") 'proof-undo-last-successful-command
+    (kbd "M-j") 'proof-assert-next-command-interactive
+    )
+  )
 
 (defun coq/init-proof-general ()
   "Initialize Proof General."
@@ -64,6 +63,7 @@
     "lp" 'proof-prf
     "x" 'proof-shell-exit
     "s" 'proof-find-theorems
+    "t" 'proof-ctxt
     "?" 'coq-Check
     "p" 'coq-Print
     ";" 'pg-insert-last-output-as-comment
